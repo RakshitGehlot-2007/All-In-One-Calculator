@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="calculator-container">
+        <div class="header">
+            <div class="header-left">
+                <img src="553180163_17853709125541325_8695935881647620126_n.jpg" alt="Photo of Rakshit Gehlot" class="profile-icon">
+                <h1>All-in-One Calculator</h1>
+            </div>
+            <div class="theme-switcher">
+                <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                <label for="theme-toggle" class="theme-toggle-label"></label>
+            </div>
+        </div>
+
+
+        <nav class="calculator-nav" role="tablist" aria-label="Calculator types">
+            <button role="tab" id="tab-basic" class="nav-tab active" data-calculator="basic" aria-controls="basic-calculator" aria-selected="true">Basic</button>
+            <button role="tab" id="tab-scientific" class="nav-tab" data-calculator="scientific" aria-controls="scientific-calculator" aria-selected="false">Scientific</button>
+            <button role="tab" id="tab-converter" class="nav-tab" data-calculator="converter" aria-controls="converter-calculator" aria-selected="false">Converter</button>
+            <button role="tab" id="tab-discount" class="nav-tab" data-calculator="discount" aria-controls="discount-calculator" aria-selected="false">Discount</button>
+            <button role="tab" id="tab-percentage" class="nav-tab" data-calculator="percentage" aria-controls="percentage-calculator" aria-selected="false">Percentage</button>
+            <button role="tab" id="tab-loan" class="nav-tab" data-calculator="loan" aria-controls="loan-calculator" aria-selected="false">Loan</button>
+            <button role="tab" id="tab-tip" class="nav-tab" data-calculator="tip" aria-controls="tip-calculator" aria-selected="false">Tip</button>
+            <button role="tab" id="tab-bmi" class="nav-tab" data-calculator="bmi" aria-controls="bmi-calculator" aria-selected="false">BMI</button>
+            <button role="tab" id="tab-date" class="nav-tab" data-calculator="date" aria-controls="date-calculator" aria-selected="false">Date</button>
+        </nav>
+
+        <section id="basic-calculator" class="calculator active" role="tabpanel" aria-labelledby="tab-basic">
+            <div class="display">
+                <span id="memory-indicator">M</span>
+                <input type="text" id="display" readonly placeholder="0" aria-label="Calculator display">
+            </div>
+            <div class="basic-calculator-body">
+                <div class="buttons">
+
+                    <button class="btn operator" onclick="memoryClear()">MC</button>
+                    <button class="btn operator" onclick="memoryRecall()">MR</button>
+                    <button class="btn operator" onclick="memoryAdd()">M+</button>
+                    <button class="btn operator" onclick="memorySubtract()">M-</button>
+
+                    <button class="btn operator" onclick="clearDisplay()">AC</button>
+                    <button class="btn operator" onclick="deleteLast()" aria-label="Delete">DEL</button>
+                    <button class="btn operator" onclick="appendToDisplay('%')" aria-label="Percentage">%</button>
+                    <button class="btn operator" onclick="appendToDisplay('/')" aria-label="Divide">÷</button>
+
+                    <button class="btn" onclick="appendToDisplay('7')">7</button>
+                    <button class="btn" onclick="appendToDisplay('8')">8</button>
+                    <button class="btn" onclick="appendToDisplay('9')">9</button>
+                    <button class="btn operator" onclick="appendToDisplay('*')" aria-label="Multiply">×</button>
+            
+                    <button class="btn" onclick="appendToDisplay('4')">4</button>
+                    <button class="btn" onclick="appendToDisplay('5')">5</button>
+                    <button class="btn" onclick="appendToDisplay('6')">6</button>
+                    <button class="btn operator" onclick="appendToDisplay('-')" aria-label="Subtract">−</button>
+    
+                    <button class="btn" onclick="appendToDisplay('1')">1</button>
+                    <button class="btn" onclick="appendToDisplay('2')">2</button>
+                    <button class="btn" onclick="appendToDisplay('3')">3</button>
+                    <button class="btn operator" onclick="appendToDisplay('+')" aria-label="Add">+</button>
+
+                    <button class="btn btn-zero" onclick="appendToDisplay('0')">0</button>
+                    <button class="btn" onclick="appendToDisplay('.')">.</button>
+                    <button class="btn equals" onclick="calculateResult()" aria-label="Equals">=</button>
+                </div>
+                <div class="history-panel">
+                    <h4>History</h4>
+                    <div id="history-content"></div>
+                    <button id="clear-history-btn" class="btn">Clear</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="scientific-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-scientific">
+            <div class="sci-display-extras">
+                <span id="angle-mode">RAD</span>
+            </div>
+            <div class="buttons">
+                <button class="btn" onclick="toggleAngleMode()">Deg/Rad</button>
+                <button class="btn" onclick="calculateSquare()">x²</button>
+                <button class="btn" onclick="calculateCube()">x³</button>
+                <button class="btn" onclick="calculatePower()">xʸ</button>
+                <button class="btn" onclick="calculateSin()">sin</button>
+                <button class="btn" onclick="calculateCos()">cos</button>
+                <button class="btn" onclick="calculateTan()">tan</button>
+                <button class="btn" onclick="calculateInvSin()">sin⁻¹</button>
+                <button class="btn" onclick="calculateInvCos()">cos⁻¹</button>
+                <button class="btn" onclick="calculateInvTan()">tan⁻¹</button>
+                <button class="btn" onclick="calculateSinh()">sinh</button>
+                <button class="btn" onclick="calculateCosh()">cosh</button>
+                <button class="btn" onclick="calculateTanh()">tanh</button>
+                <button class="btn" onclick="calculateAbs()">|x|</button>
+                <button class="btn" onclick="calculateFactorial()">n!</button>
+                <button class="btn" onclick="calculateSqrt()">√</button>
+                <button class="btn" onclick="calculateLog()">log₁₀</button>
+                <button class="btn" onclick="calculateLn()">ln</button>
+                <button class="btn" onclick="calculateTenPower()">10ˣ</button>
+                <button class="btn" onclick="calculateExp()">e^x</button>
+                <button class="btn" onclick="calculatePi()">π</button>
+                <button class="btn" onclick="calculateEuler()">e</button>
+            </div>
+        </section>
+
+        <section id="converter-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-converter">
+            <div class="converter-form">
+                <div class="converter-row">
+                    <label for="convert-amount">Amount</label>
+                    <input type="number" id="convert-amount" value="1" min="0">
+                </div>
+                <div class="converter-row">
+                    <div class="select-container">
+                        <label for="from-currency">From</label>
+                        <select id="from-currency"></select>
+                    </div>
+                    <button id="swap-button" class="btn" aria-label="Swap currencies">↔</button>
+                    <div class="select-container">
+                        <label for="to-currency">To</label>
+                        <select id="to-currency"></select>
+                    </div>
+                </div>
+            </div>
+            <div id="converter-result" class="converter-result-display" aria-live="polite"></div>
+
+            <hr class="converter-separator">
+
+            <div class="converter-form">
+                <h3>Length Converter</h3>
+                <div class="converter-row">
+                    <label for="length-amount">Amount</label>
+                    <input type="number" id="length-amount" value="1" min="0">
+                </div>
+                <div class="converter-row">
+                    <div class="select-container">
+                        <label for="from-length-unit">From</label>
+                        <select id="from-length-unit"></select>
+                    </div>
+                    <button id="swap-length-button" class="btn" aria-label="Swap length units">↔</button>
+                    <div class="select-container">
+                        <label for="to-length-unit">To</label>
+                        <select id="to-length-unit"></select>
+                    </div>
+                </div>
+            </div>
+            <div id="length-converter-result" class="converter-result-display" aria-live="polite"></div>
+
+            <hr class="converter-separator">
+
+            <div class="converter-form">
+                <h3>Data Storage Converter</h3>
+                <div class="converter-row">
+                    <label for="data-amount">Amount</label>
+                    <input type="number" id="data-amount" value="1" min="0">
+                </div>
+                <div class="converter-row">
+                    <div class="select-container">
+                        <label for="from-data-unit">From</label>
+                        <select id="from-data-unit"></select>
+                    </div>
+                    <button id="swap-data-button" class="btn" aria-label="Swap data units">↔</button>
+                    <div class="select-container">
+                        <label for="to-data-unit">To</label>
+                        <select id="to-data-unit"></select>
+                    </div>
+                </div>
+            </div>
+            <div id="data-converter-result" class="converter-result-display" aria-live="polite"></div>
+
+            <hr class="converter-separator">
+
+            <div class="converter-form">
+                <h3>Temperature Converter</h3>
+                <div class="converter-row">
+                    <label for="temp-amount">Value</label>
+                    <input type="number" id="temp-amount" value="0">
+                </div>
+                <div class="converter-row">
+                    <div class="select-container">
+                        <label for="from-temp-unit">From</label>
+                        <select id="from-temp-unit"></select>
+                    </div>
+                    <button id="swap-temp-button" class="btn" aria-label="Swap temperature units">↔</button>
+                    <div class="select-container">
+                        <label for="to-temp-unit">To</label>
+                        <select id="to-temp-unit"></select>
+                    </div>
+                </div>
+            </div>
+            <div id="temp-converter-result" class="converter-result-display" aria-live="polite"></div>
+        </section>
+
+        <section id="percentage-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-percentage">
+            <div class="converter-form">
+                <h3>Percentage Calculator</h3>
+                <div class="converter-row">
+                    <label for="percentage-input">What is</label>
+                    <input type="number" id="percentage-input" value="10">
+                    <label for="percentage-of-input">% of</label>
+                    <input type="number" id="percentage-of-input" value="50">
+                </div>
+            </div>
+            <div id="percentage-result" class="converter-result-display">
+            
+            </div>
+        </section>
+
+        <section id="discount-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-discount">
+            <div class="converter-form">
+                <h3>Discount Calculator</h3>
+                <div class="converter-row">
+                    <label for="original-price">Original Price</label>
+                    <input type="number" id="original-price" value="100" min="0">
+                </div>
+                <div class="converter-row">
+                    <label for="discount-percentage">Discount %</label>
+                    <input type="number" id="discount-percentage" value="25" min="0" max="100">
+                </div>
+            </div>
+            <div id="discount-result" class="converter-result-display" aria-live="polite" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+
+            </div>
+        </section>
+
+        <section id="loan-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-loan">
+            <div class="converter-form">
+                <h3>Loan / Mortgage Calculator</h3>
+                <div class="converter-row">
+                    <label for="loan-amount">Loan Amount</label>
+                    <input type="number" id="loan-amount" value="100000" min="0">
+                </div>
+                <div class="converter-row">
+                    <label for="interest-rate">Annual Interest Rate (%)</label>
+                    <input type="number" id="interest-rate" value="5" min="0">
+                </div>
+                <div class="converter-row">
+                    <label for="loan-term">Loan Term (Years)</label>
+                    <input type="number" id="loan-term" value="30" min="1">
+                </div>
+                <button class="btn equals" id="calculate-loan-btn">Calculate</button>
+            </div>
+            <div id="loan-result" class="converter-result-display" aria-live="polite" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+        
+            </div>
+        </section>
+
+        <section id="tip-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-tip">
+            <div class="converter-form">
+                <h3>Tip Calculator</h3>
+                <div class="converter-row">
+                    <label for="bill-amount">Bill Amount</label>
+                    <input type="number" id="bill-amount" value="50" min="0">
+                </div>
+                <div class="converter-row">
+                    <label for="tip-percentage">Tip %</label>
+                    <input type="range" id="tip-percentage" value="15" min="0" max="100">
+                    <span id="tip-percentage-value">15%</span>
+                </div>
+                <div class="converter-row">
+                    <label for="split-count">Split Between</label>
+                    <input type="number" id="split-count" value="1" min="1">
+                </div>
+            </div>
+            <div id="tip-result" class="converter-result-display" aria-live="polite" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+    
+            </div>
+        </section>
+
+        <section id="bmi-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-bmi">
+            <div class="converter-form">
+                <h3>Body Mass Index (BMI)</h3>
+                <div class="converter-row">
+                    <label for="weight-input">Weight</label>
+                    <input type="number" id="weight-input" value="70" min="0">
+                    <select id="weight-unit-select">
+                        <option value="kg">kg</option>
+                        <option value="lbs">lbs</option>
+                    </select>
+                </div>
+                <div class="converter-row">
+                    <label for="height-input">Height</label>
+                    <input type="number" id="height-input" value="175" min="0">
+                    <select id="height-unit-select">
+                        <option value="cm">cm</option>
+                        <option value="inches">inches</option>
+                    </select>
+                </div>
+                <button class="btn equals" id="calculate-bmi-btn">Calculate BMI</button>
+            </div>
+            <div id="bmi-result" class="converter-result-display" aria-live="polite">
+                Enter your weight and height to calculate BMI.
+            </div>
+        </section>
+        <section id="date-calculator" class="calculator" role="tabpanel" aria-labelledby="tab-date">
+            <div class="converter-form">
+                <h3>Date Difference</h3>
+                <div class="converter-row">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date">
+                </div>
+                <div class="converter-row">
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date">
+                </div>
+                <button class="btn equals" id="calculate-date-btn">Calculate Difference</button>
+            </div>
+            <div id="date-result" class="converter-result-display" aria-live="polite">
+                Select two dates to see the difference.
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/mathjs@12.4.2/lib/browser/math.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
